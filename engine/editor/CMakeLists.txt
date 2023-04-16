@@ -7,6 +7,7 @@ file(GLOB GLAD_C ${THIRD_PARTY_DIR}/glfw/src/*.c)
 # 通过source_group来对文件进行分组
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${EDITOR_HEADERS})
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${EDITOR_SOURCES})
+
 source_group("glad" ${GLAD_C})
 
 # 设置可执行文件
