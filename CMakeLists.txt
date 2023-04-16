@@ -4,19 +4,14 @@ cmake_minimum_required (VERSION 3.10.2)
 
 # ���û�����Ŀ
 set(PROJECT_VERSION "0.0.1.0" CACHE STRING "Ĭ�ϰ汾��")
-# 1. �����������ļ��еĿ���
+# 1. �����������ļ��еĿ���
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 set(PROJECT_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
-set(ENGINE_ROOT_DIR ${PROJECT_ROOT_DIR}/engine)
-set(THIRD_PARTY_DIR ${ENGINE_ROOT_DIR}/3rdParty)
-
-set(GLFW_INCLUDE ${THIRD_PARTY_DIR}/glfw/include)
-set(GLFW_SRC ${THIRD_PARTY_DIR}/glfw/src)
-set(GLFW_LIB ${THIRD_PARTY_DIR}/glfw/lib/glfw3.lib)
 
 
-# ������Ŀ���� ������Ŀ���ƺ���?�� PROJECT_NAME ��ȡ��Ŀ����
+
+# ������Ŀ���� ������Ŀ���ƺ���?�� PROJECT_NAME ��ȡ��Ŀ����
 project(GameEngine)
 
 add_subdirectory(engine)
@@ -38,11 +33,11 @@ message("project name is top level: ${${PROJECT_NAME}_IS_TOP_LEVEL}")
 
 # ���ñ���normal_var��ֵΪa;b;c
 set (normal_var a b c)
-# �����?>>> value = a;b;c
+# �����?>>> value = a;b;c
 message (">>> value = ${normal_var}")
 # ���ñ���Ϊ��
 set (normal_var) 
-# �����?>>> value = 
+# �����?>>> value = 
 message (">>> value = ${normal_var}")
 
 # ���庯��
@@ -51,7 +46,7 @@ function(func)
     # STATUS:�����ڱ�������е�Debug��Ϣ;
     # FATAL_ERROR:����CMake Error,��ֹͣ����ϵͳ�Ĺ�������
     message(STATUS "call func")
-    # �������ʾ��?
+    # �������ʾ��?
     # CMAKE_SIZEOF_VOID_P ������ȡVoid���͵Ĵ�С
     if (CMAKE_SIZEOF_VOID_P EQUAL 4)
         message(STATUS "X86")   # 32λϵͳ����ӡX86
