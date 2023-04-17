@@ -9,7 +9,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 set(PROJECT_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
-
+set(BINARY_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 # ������Ŀ���� ������Ŀ���ƺ���?�� PROJECT_NAME ��ȡ��Ŀ����
 project(GameEngine)
@@ -33,11 +33,11 @@ message("project name is top level: ${${PROJECT_NAME}_IS_TOP_LEVEL}")
 
 # ���ñ���normal_var��ֵΪa;b;c
 set (normal_var a b c)
-# �����?>>> value = a;b;c
+# �����??>>> value = a;b;c
 message (">>> value = ${normal_var}")
 # ���ñ���Ϊ��
 set (normal_var) 
-# �����?>>> value = 
+# �����??>>> value = 
 message (">>> value = ${normal_var}")
 
 # ���庯��
@@ -46,7 +46,7 @@ function(func)
     # STATUS:�����ڱ�������е�Debug��Ϣ;
     # FATAL_ERROR:����CMake Error,��ֹͣ����ϵͳ�Ĺ�������
     message(STATUS "call func")
-    # �������ʾ��?
+    # �������ʾ��??
     # CMAKE_SIZEOF_VOID_P ������ȡVoid���͵Ĵ�С
     if (CMAKE_SIZEOF_VOID_P EQUAL 4)
         message(STATUS "X86")   # 32λϵͳ����ӡX86
