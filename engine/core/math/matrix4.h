@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-//#include <spdlog/spdlog.h>
+#include <spdlog/spdlog.h>
 namespace Core
 {
 	namespace Math

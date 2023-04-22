@@ -1,5 +1,5 @@
 # ChordsEngine\core
-set(CORE_NAME Core)
+set(CORE_NAME core)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_ROOT_DIR}/lib)
 # 查找所有include目录下的.h和.cpp文件
 file(GLOB_RECURSE CORE_HEADERS "*.h")

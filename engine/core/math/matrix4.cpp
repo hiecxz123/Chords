@@ -111,8 +111,8 @@ Core::Math::Mat4x4 Core::Math::Mat4x4::operator*(const Mat4x4 mat4x4) const
 
 void Core::Math::Mat4x4::PrintMat4x4()
 {
-	//spdlog::info("Mat4x4");
-	std::cout << "Mat4x4" << std::endl;
+	spdlog::info("Mat4x4");
+	//std::cout << "Mat4x4" << std::endl;
 }
 
 

@@ -1,6 +1,7 @@
 # ChordsEngine\engine\editor
 set(EDITOR_NAME Editor)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_ROOT_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # 查找所有include目录下的.h和.cpp文件
 file(GLOB EDITOR_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
 file(GLOB EDITOR_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp)
@@ -9,6 +10,7 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${EDITOR_HEADERS})
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${EDITOR_SOURCES})
 
 message("cmake project name: ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}")
+
 link_libraries(${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/Debug/Core.lib)
 
 
@@ -18,6 +20,9 @@ add_executable(
     ${EDITOR_HEADERS}
     ${EDITOR_SOURCES}
 )
+
+target_link_libraries(${EDITOR_NAME} core)
+
 set_target_properties(${EDITOR_NAME} PROPERTIES FOLDER "Engine")
 
 
@@ -30,4 +35,4 @@ target_include_directories(${EDITOR_NAME} PUBLIC ${SPDLOG_INCLUDE_DIR})
 include_directories(${SPDLOG_INCLUDE_DIR}) 
 include_directories(${THIRD_PARTY_DIR}) 
 
-target_include_directories(${EDITOR_NAME} PUBLIC ${ENGINE_CORE_DIR}/3rdParty/include)
+# target_include_directories(${EDITOR_NAME} PUBLIC ${ENGINE_CORE_DIR}/3rdParty/include)
