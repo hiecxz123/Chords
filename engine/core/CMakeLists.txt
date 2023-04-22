@@ -1,5 +1,6 @@
 # ChordsEngine\core
 set(CORE_NAME Core)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_ROOT_DIR}/lib)
 # 查找所有include目录下的.h和.cpp文件
 file(GLOB_RECURSE CORE_HEADERS "*.h")
 file(GLOB_RECURSE CORE_SOURCES "*.cpp")
@@ -14,5 +15,15 @@ add_library(${CORE_NAME} ${CORE_HEADERS} ${CORE_SOURCES})
 # 设置可执行文件
 # add_executable(${CORE_NAME} ${CORE_HEADERS} ${CORE_SOURCES})
 
+
 # 2. 把工程加到文件夹中
 set_target_properties(${CORE_NAME} PROPERTIES FOLDER "Engine")
+target_include_directories(${CORE_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+#target_include_directories(${CORE_NAME} PUBLIC ${THIRD_PARTY_DIR}) 
+target_include_directories(${CORE_NAME} PUBLIC ${ENGINE_CORE_DIR}/3rdParty/include)
+include_directories(${SPDLOG_INCLUDE_DIR}) 
+
+link_libraries(${ENGINE_CORE_DIR}/3rdParty/lib/spdlog.lib)
+link_libraries(${ENGINE_CORE_DIR}/3rdParty/lib/spdlogd.lib)
+# target_link_libraries(${TARGET_NAME} PUBLIC spdlog::spdlog)
+

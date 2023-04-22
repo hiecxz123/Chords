@@ -31,6 +31,10 @@ message("project is top level: ${PROJECT_IS_TOP_LEVEL}")
 # project name is top level: ON
 message("project name is top level: ${${PROJECT_NAME}_IS_TOP_LEVEL}") 
 
+# message("lib path: ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}") 
+
+# message("CMAKE_INSTALL_PREFIX:::" ${CMAKE_INSTALL_PREFIX})
+
 # ���ñ���normal_var��ֵΪa;b;c
 set (normal_var a b c)
 # �����??>>> value = a;b;c
