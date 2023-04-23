@@ -11,6 +11,10 @@ set(PROJECT_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(BINARY_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
+set(THIRDPARTY_ROOT ${PROJECT_ROOT_DIR}/3rdParty)
+
+
+
 # ������Ŀ���� ������Ŀ���ƺ���?�� PROJECT_NAME ��ȡ��Ŀ����
 project(GameEngine)
 
