@@ -11,7 +11,11 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${EDITOR_SOURCES})
 
 message("cmake project name: ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}")
 
-link_libraries(${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/Debug/Core.lib)
+# link_libraries(${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/Debug/Core.lib)
+target_link_libraries ( core PRIVATE
+                        ${LIBRARY_DEBUG}
+                        ${LIBRARY_RELEASE} 
+                        )
 
 
 # 设置可执行文件
