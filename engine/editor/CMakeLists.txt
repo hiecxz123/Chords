@@ -1,5 +1,5 @@
 # ChordsEngine\engine\editor
-set(EDITOR_NAME Editor)
+set(EDITOR_NAME editor)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_ROOT_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # 查找所有include目录下的.h和.cpp文件

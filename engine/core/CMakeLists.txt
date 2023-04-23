@@ -14,7 +14,7 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${CORE_HEADERS} ${CORE_SOURC
 add_library(${CORE_NAME} ${CORE_HEADERS} ${CORE_SOURCES})
 # 设置可执行文件
 # add_executable(${CORE_NAME} ${CORE_HEADERS} ${CORE_SOURCES})
-
+target_link_libraries(${CORE_NAME} spdlog::spdlog)
 
 # 2. 把工程加到文件夹中
 set_target_properties(${CORE_NAME} PROPERTIES FOLDER "Engine")

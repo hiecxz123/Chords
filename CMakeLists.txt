@@ -15,6 +15,7 @@ set(BINARY_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 project(GameEngine)
 
 add_subdirectory(engine)
+add_subdirectory(3rdParty/spdlog)
 
 
 # print project name
