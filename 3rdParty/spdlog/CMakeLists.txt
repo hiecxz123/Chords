@@ -351,3 +351,5 @@ if(SPDLOG_INSTALL)
     # ---------------------------------------------------------------------------------------
     include(cmake/spdlogCPack.cmake)
 endif()
+
+set_target_properties(spdlog PROPERTIES FOLDER "ThridParty")
