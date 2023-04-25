@@ -2,6 +2,7 @@
 #include<math/math.h>
 #include<math/matrix4.h>
 #include <stdlib.h>
+#include<log/Log.h>
 using namespace std;
 int main()
 {
@@ -18,7 +19,7 @@ int main()
 		4, 4, 4, 4
 	);
 	Core::Math::Mat4x4 temp;
-	temp = mat4x41 + mat4x42;
+	temp = mat4x41 * mat4x42;
 
 
 	temp.PrintMat4x4();

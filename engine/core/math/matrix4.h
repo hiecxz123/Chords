@@ -23,6 +23,8 @@ namespace Core
 			Mat4x4 operator-(const Mat4x4 mat4x4) const;
 			Mat4x4 operator*(const Mat4x4 mat4x4) const;
 
+			Mat4x4 TransposeMatrix();
+
 			void PrintMat4x4();
 		};
 	}
