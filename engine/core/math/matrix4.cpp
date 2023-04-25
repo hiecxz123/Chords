@@ -23,21 +23,21 @@ Core::Math::Mat4x4::Mat4x4(const float floatArr[16])
 Core::Math::Mat4x4::Mat4x4(float v11, float v12, float v13, float v14, float v21, float v22, float v23, float v24, float v31, float v32, float v33, float v34, float v41, float v42, float v43, float v44)
 {
 	m4x4[0][0] = v11;
-	m4x4[0][1] = v11;
-	m4x4[0][2] = v11;
-	m4x4[0][3] = v11;
-	m4x4[1][0] = v11;
-	m4x4[1][1] = v11;
-	m4x4[1][2] = v11;
-	m4x4[1][3] = v11;
-	m4x4[2][0] = v11;
-	m4x4[2][1] = v11;
-	m4x4[2][2] = v11;
-	m4x4[2][3] = v11;
-	m4x4[3][0] = v11;
-	m4x4[3][1] = v11;
-	m4x4[3][2] = v11;
-	m4x4[3][3] = v11;
+	m4x4[0][1] = v12;
+	m4x4[0][2] = v13;
+	m4x4[0][3] = v14;
+	m4x4[1][0] = v21;
+	m4x4[1][1] = v22;
+	m4x4[1][2] = v23;
+	m4x4[1][3] = v24;
+	m4x4[2][0] = v31;
+	m4x4[2][1] = v32;
+	m4x4[2][2] = v33;
+	m4x4[2][3] = v34;
+	m4x4[3][0] = v41;
+	m4x4[3][1] = v42;
+	m4x4[3][2] = v43;
+	m4x4[3][3] = v44;
 }
 
 Core::Math::Mat4x4 Core::Math::Mat4x4::operator+(const Mat4x4 mat4x4) const
@@ -111,9 +111,15 @@ Core::Math::Mat4x4 Core::Math::Mat4x4::operator*(const Mat4x4 mat4x4) const
 
 void Core::Math::Mat4x4::PrintMat4x4()
 {
-	spdlog::info("Mat4x4");
+	spdlog::info("\n{0} {1} {2} {3}\n{4} {5} {6} {7}\n{8} {9} {10} {11}\n{12} {13} {14} {15}",
+		m4x4[0][0], m4x4[0][1], m4x4[0][2], m4x4[0][3],
+		m4x4[1][0], m4x4[1][1], m4x4[1][2], m4x4[1][3],
+		m4x4[2][0], m4x4[2][1], m4x4[2][2], m4x4[2][3],
+		m4x4[3][0], m4x4[3][1], m4x4[3][2], m4x4[3][3]);
 	//std::cout << "Mat4x4" << std::endl;
 }
+
+
 
 
 
