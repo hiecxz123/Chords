@@ -20,6 +20,7 @@ project(GameEngine)
 
 add_subdirectory(engine)
 add_subdirectory(3rdParty/spdlog)
+add_subdirectory(3rdParty/glfw)
 
 
 # print project name
