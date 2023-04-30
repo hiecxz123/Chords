@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 
 #include <iostream>
+#include <render/render_system.h>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -84,3 +85,34 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
 }
+namespace Core
+{
+    namespace Render
+    {
+        RenderSystem::RenderSystem()
+        {
+
+        }
+        RenderSystem::~RenderSystem()
+        {
+
+        }
+        void RenderSystem::FramebufferSizeCallback(GLFWwindow* window, int width, int height)
+        {
+
+        }
+        void RenderSystem::ProcessInput(GLFWwindow* window)
+        {
+
+        }
+        void RenderSystem::InitRenderSystem()
+        {
+
+        }
+        void RenderSystem::Update()
+        {
+
+        }
+    }
+}
+
