@@ -19,8 +19,9 @@ set(THIRDPARTY_ROOT ${PROJECT_ROOT_DIR}/3rdParty)
 project(GameEngine)
 
 add_subdirectory(engine)
-add_subdirectory(3rdParty/spdlog)
-add_subdirectory(3rdParty/glfw)
+add_subdirectory(3rdParty)
+
+
 
 
 # print project name
