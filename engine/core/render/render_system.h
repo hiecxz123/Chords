@@ -1,24 +1,36 @@
 #include<iostream>
+#include<log/Log.h>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <string>
 namespace Core
 {
 	namespace Render
 	{
+		
+		struct RenderSettings
+		{
+			int width = 800;
+			int height = 600;
+			char* name = "GameEngine";
+		};
+
 		class RenderSystem
 		{
 		public:
 			RenderSystem();
 			~RenderSystem();
 
-			void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
+			static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
 			void ProcessInput(GLFWwindow* window);
 
 			void InitRenderSystem();
-			void Update();
+			void InitRenderSystem(RenderSettings settings);
+			void UpdateOneFrame();
+			
 
-		public:
-			const unsigned int RENDER_WIDTH = 800;
-			const unsigned int RENDER_HEIGHT = 600;
-
+		private:
+			GLFWwindow* window;
 		};
 	}
 }
