@@ -9,6 +9,7 @@ namespace Core
 	public:
 		GameEngine();
 		~GameEngine();
+		
 		void OnTick();
 		void Run();
 	private:
