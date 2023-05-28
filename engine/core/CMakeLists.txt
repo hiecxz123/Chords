@@ -6,13 +6,14 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_ROOT_DIR}/lib)
 file(GLOB_RECURSE CORE_HEADERS "*.h")
 file(GLOB_RECURSE CORE_SOURCES "*.cpp")
 file(GLOB_RECURSE CORE_SOURCES_C "*.c")
+file(GLOB_RECURSE CORE_SOURCES_INL "*.inl")
 
 # 通过source_group来对文件进行分组,TREE使用实际路径，第二个参数是相对路径截取
-source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${CORE_HEADERS} ${CORE_SOURCES} ${CORE_SOURCES_C})
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${CORE_HEADERS} ${CORE_SOURCES} ${CORE_SOURCES_C} ${CORE_SOURCES_INL})
 
 # add_library(${CORE_NAME} ${CORE_HEADERS} ${CORE_SOURCES})
 
-add_library(${CORE_NAME} ${CORE_HEADERS} ${CORE_SOURCES} ${CORE_SOURCES_C})
+add_library(${CORE_NAME} ${CORE_HEADERS} ${CORE_SOURCES} ${CORE_SOURCES_C} ${CORE_SOURCES_INL})
 # 设置可执行文件
 # add_executable(${CORE_NAME} ${CORE_HEADERS} ${CORE_SOURCES})
 target_link_libraries(${CORE_NAME} spdlog::spdlog)
@@ -26,6 +27,8 @@ target_include_directories(${CORE_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(${CORE_NAME} PUBLIC ${THIRDPARTY_ROOT}/spdlog/include)
 target_include_directories(${CORE_NAME} PUBLIC ${THIRDPARTY_ROOT}/glad/include)
 target_include_directories(${CORE_NAME} PUBLIC ${THIRDPARTY_ROOT}/glad/src)
+
+
 include_directories(${SPDLOG_INCLUDE_DIR}) 
 
 # link_libraries(${ENGINE_CORE_DIR}/3rdParty/lib/spdlog.lib)

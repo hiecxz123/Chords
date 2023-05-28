@@ -30,6 +30,7 @@ namespace Core
 		float zoom;
 
 		Camera(Math::Vector3 _position = Math::Vector3(0, 0, 0), Math::Vector3 _up = Math::Vector3(0, 1, 0), float _yaw = CAMERA_YAW, float _pitch = CAMERA_PITCH);
+		Camera(float posX, float posY, float posZ, float upX, float upZ, float yaw, float pitch);
 	private:
 		void UpdateCameraVectors();
 	};
