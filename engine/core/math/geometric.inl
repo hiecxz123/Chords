@@ -1,7 +1,0 @@
-namespace Core
-{
-	namespace Math
-	{
-		
-	}
-}

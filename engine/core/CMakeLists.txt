@@ -7,6 +7,7 @@ file(GLOB_RECURSE CORE_HEADERS "*.h")
 file(GLOB_RECURSE CORE_SOURCES "*.cpp")
 file(GLOB_RECURSE CORE_SOURCES_C "*.c")
 file(GLOB_RECURSE CORE_SOURCES_INL "*.inl")
+add_subdirectory(glm)
 
 # 通过source_group来对文件进行分组,TREE使用实际路径，第二个参数是相对路径截取
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${CORE_HEADERS} ${CORE_SOURCES} ${CORE_SOURCES_C} ${CORE_SOURCES_INL})

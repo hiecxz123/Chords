@@ -1,28 +1,86 @@
 #include <render/camera/camera.h>
 #include <cmath>
-#include <math/trigonometric.h>
-
+#include <glm/geometric.hpp>
+#include<glm/glm.hpp>
+#include<glm/gtc/matrix_transform.hpp>
 namespace Core
 {
-
-	Camera::Camera(Math::Vector3 _position, Math::Vector3 _up, float _yaw, float _pitch) :front(Math::Vector3(0, 0, -1)), movementSpeed(CAMERA_SPEED)
+	Camera::Camera(glm::vec3 _position, glm::vec3 _up, float _yaw, float _pitch) :
+		m_front(glm::vec3(0.0f, 0.0f, -1.0f)), m_movementSpeed(CAMERA_SPEED), m_mouseSensitivity(CAMERA_SENSITIVITY), m_zoom(CAMERA_ZOOM)
 	{
-		position = _position;
-		worldUp = _up;
-		yaw = _yaw;
-		pitch = _pitch;
+		m_position = _position;
+		m_worldUp = _up;
+		m_yaw = _yaw;
+		m_pitch = _pitch;
+		UpdateCameraVectors();
 	}
+
+	Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch) :
+		m_front(glm::vec3(0.0f, 0.0f, -1.0f)), m_movementSpeed(CAMERA_SPEED), m_mouseSensitivity(CAMERA_SENSITIVITY), m_zoom(CAMERA_ZOOM)
+	{
+		m_position = glm::vec3(posX, posY, posZ);
+		m_worldUp = glm::vec3(upX, upY, upZ);
+		m_yaw = yaw;
+		m_pitch = pitch;
+		UpdateCameraVectors();
+	}
+
 	void Camera::UpdateCameraVectors()
 	{
-		Math::Vector3 front;
+		glm::vec3 front;
 
-		front.x = cos(Math::radians(yaw)) * cos(Math::radians(pitch));
-		front.y = sin(Math::radians(pitch));
-		front.z = sin(Math::radians(yaw)) * cos(Math::radians(pitch));
-		//Front = glm::normalize(front);
-		//// also re-calculate the Right and Up vector
-		//Right = glm::normalize(glm::cross(Front, WorldUp));  // normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
-		//Up = glm::normalize(glm::cross(Right, Front));
+		front.x = cos(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));
+		front.y = sin(glm::radians(m_pitch));
+		front.z = sin(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));
+		m_front = glm::normalize(front);
+
+		m_right = glm::normalize(glm::cross(m_front, m_worldUp));
+		m_up = glm::normalize(glm::cross(m_right, m_front));
+	}
+
+	glm::mat4 Camera::GetViewMatrix()
+	{
+		return glm::lookAt(m_position, m_position + m_front, m_up);
+	}
+
+	void Camera::CameraMovement(float xoffset, float yoffset, GLboolean constrainPitch)
+	{
+		xoffset *= m_mouseSensitivity;
+		yoffset *= m_mouseSensitivity;
+
+		m_yaw += xoffset;
+		m_pitch += yoffset;
+
+		// make sure that when pitch is out of bounds, screen doesn't get flipped
+		if (constrainPitch)
+		{
+			if (m_pitch > 89.0f)
+				m_pitch = 89.0f;
+			if (m_pitch < -89.0f)
+				m_pitch = -89.0f;
+		}
+		UpdateCameraVectors();
+	}
+
+	void Camera::CameraScroll(float yoffset)
+	{
+		m_zoom -= (float)yoffset;
+		if (m_zoom < 1.0f)
+			m_zoom = 1.0f;
+		if (m_zoom > 45.0f)
+			m_zoom = 45.0f;
+	}
+	void Camera::ProcessKeyboard(CameraMovementEnum direction, float deltaTime)
+	{
+		float velocity = m_movementSpeed * deltaTime;
+		if (direction == CameraMovementEnum::FORWARD)
+			m_position += m_front * velocity;
+		if (direction == CameraMovementEnum::BACKWARD)
+			m_position -= m_front * velocity;
+		if (direction == CameraMovementEnum::LEFT)
+			m_position -= m_right * velocity;
+		if (direction == CameraMovementEnum::RIGHT)
+			m_position += m_right * velocity;
 	}
 }
 
